@@ -1,0 +1,33 @@
+{
+  "name": "webpack_frame",
+  "version": "1.0.0",
+  "description": "webpack frame",
+  "main": "webpack.dev.js",
+  "dependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.4",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
+    "babel-preset-env": "^1.7.0",
+    "css-loader": "^1.0.1",
+    "less-loader": "^4.1.0",
+    "less": "^3.8.1",
+    "style-loader": "^0.23.0",
+    "uglifyjs-webpack-plugin": "^2.0.1",
+    "webpack": "^4.25.1",
+    "webpack-cli": "^3.1.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xieminhui/webpack_frame.git"
+  },
+  "author": "xie",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xieminhui/webpack_frame/issues"
+  },
+  "homepage": "https://github.com/xieminhui/webpack_frame#readme"
+}
