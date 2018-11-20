@@ -2,11 +2,12 @@
 const path = require('path')
 const utils = require('./utils')
 const config = require('./config');
+const vueLoaderConfig = require('./vue-loader.conf')
 
 const env = process.env.NODE_ENV; 
 module.exports = {
    context: path.resolve(__dirname, '../'),
-   entry: utils.getEntries().newEntries,
+   entry: utils.getEntries().map(v => {return `../src/${v}.js`}),
    output: {
       path: path.resolve(__dirname, '../dist'),
       filename: '[name].js',
@@ -22,6 +23,7 @@ module.exports = {
          {
             test: /\.vue$/,
             loader: 'vue-loader',
+            options: vueLoaderConfig
          },
          {
             test: /\.js$/,
@@ -73,6 +75,14 @@ module.exports = {
       ]
    },
    plugins: [
-      ...utils.getEntries().HtmlWebpackPluginConfig
+      ...utils.getEntries().map(v => {
+         var plug =  new HtmlWebpackPlugin({
+            filename: utils.resolve('/dist/'+ v +'.html'),
+            chunks: [utils.resolve('/src/' + v +'.js')],
+            template: utils.resolve('/public/src/index.html'),
+            inject: true
+        });   
+         return plug;
+      }),
    ]
 }
