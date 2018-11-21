@@ -13,7 +13,15 @@ module.exports = merge(baseWebpackConfig, {
       rules: utils.styleLoaders({ sourceMap: config.dev.cssSourceMap, usePostCss: true}),
       devtool: config.dev.devtool,
       devServer: {
-         
+         clientLogLevel: 'warning',
+         historyApiFallback: {
+            rewrites: [
+            
+            ]
+         },
+         hot: true,
+         host: config.dev.host,
+         port: config.dev.port
       }
    }
 })
