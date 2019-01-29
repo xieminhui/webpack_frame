@@ -79,7 +79,7 @@ module.exports = {
          var plug =  new HtmlWebpackPlugin({
             filename: utils.resolve('/dist/'+ v +'.html'),
             chunks: [utils.resolve('/src/' + v +'.js')],
-            template: utils.resolve('/public/src/index.html'),
+            template: utils.resolve(v +'/index.html'),
             inject: true
         });   
          return plug;

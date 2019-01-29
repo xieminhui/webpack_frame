@@ -14,13 +14,14 @@ module.exports = {
    },
    devtool: config.build.productionSourceMap ? config.build.devtool : false,
    output: {
-     path: config.build.assetRoot,
+     path: config.build.assetsRoot,
      filename: path.join(config.build.assetsSubDirectory, 'js/[name].[chunkhash].js'),
      chunkFilename: path.join(config.build.assetsSubDirectory, 'js/[id].[chunkhash].js')
    },
    plugins: [
       ...utils.getEntries().map(v => {
-         return new ExtractTextPlugin(utils.resolve(`/src/${v}.css`));
+         return new ExtractTextPlugin({filename: utils.resolve(`/css/${v}[name].[contenthash].css`), allChunks: true});
       }),
+
    ]
 }

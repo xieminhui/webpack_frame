@@ -8,6 +8,7 @@ module.exports = {
       cssSourceMap: true,
       host: 'localhost',
       port: 8080,
+      proxyTable: {},
       devtool: 'cheap-module-eval-source-map',
       host: 'localhost',
       port: 8080,

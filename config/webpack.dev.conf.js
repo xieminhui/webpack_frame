@@ -11,7 +11,8 @@ module.exports = merge(baseWebpackConfig, {
    mode: 'development',
    module: {
       rules: utils.styleLoaders({ sourceMap: config.dev.cssSourceMap, usePostCss: true}),
-      devtool: config.dev.devtool,
+   },
+   devtool: config.dev.devtool,
       devServer: {
          clientLogLevel: 'warning',
          historyApiFallback: {
@@ -21,7 +22,7 @@ module.exports = merge(baseWebpackConfig, {
          },
          hot: true,
          host: config.dev.host,
-         port: config.dev.port
+         port: config.dev.port,
+         proxy: config.dev.proxyTable,
       }
-   }
 })
