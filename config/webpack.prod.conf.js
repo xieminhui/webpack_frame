@@ -2,6 +2,8 @@
 const config = require('./config')
 const utils = require('./utils')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 
 module.exports = {
    mode: 'development',
@@ -22,6 +24,17 @@ module.exports = {
       ...utils.getEntries().map(v => {
          return new ExtractTextPlugin({filename: utils.resolve(`/css/${v}[name].[contenthash].css`), allChunks: true});
       }),
-
+      new UglifyJsPlugin({
+         uglifyOptions: {
+            compress: {
+               warnings: false,
+            },
+            sourceMap: config.build.productionSourceMap,
+            parallel: true
+         }
+      }),
+      new OptimizeCSSPlugin({
+         
+      })
    ]
 }
