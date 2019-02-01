@@ -3,8 +3,14 @@ const path = require('path')
 const utils = require('./utils')
 const config = require('./config');
 const vueLoaderConfig = require('./vue-loader.conf')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const env = process.env.NODE_ENV; 
+
+function resolve (dir) {
+   return path.join(__dirname, '..', dir)
+ }
+ console.log(utils.getEntries());
 module.exports = {
    context: path.resolve(__dirname, '../'),
    entry: utils.getEntries().map(v => {return `../src/${v}.js`}),

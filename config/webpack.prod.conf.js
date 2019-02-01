@@ -21,7 +21,7 @@ module.exports = {
      chunkFilename: path.join(config.build.assetsSubDirectory, 'js/[id].[chunkhash].js')
    },
    plugins: [
-      ...utils.getEntries().map(v => {
+      ...utils.getEntries('css').map(v => {
          return new ExtractTextPlugin({filename: utils.resolve(`/css/${v}[name].[contenthash].css`), allChunks: true});
       }),
       new UglifyJsPlugin({

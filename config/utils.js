@@ -2,20 +2,21 @@
 const glob = require('glob')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const path = require('path')
 
 //动态查找所有入口
 exports.getEntries = function (type) {
    var files = glob.sync('./src/page/*/index.js');
    var newEntries = [];
-
+console.log(files)
    files.forEach(function (f) {
-      var result = /.*\/page\/(.*?)\/index\.js/.exec(f);
+      var result = /\/page\/(.*?)\/index\.js/.exec(f);
       var name = type === "css"?result[1]: result[0]; //page/pagea/index
       newEntries.push(name);
    });
    return newEntries;
 }
-
+getEntries();
 exports.resolve = function (dir) {
    return path.join(__dirname, '..', dir)
 }
